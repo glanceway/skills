@@ -25,8 +25,11 @@ Every source emits items with these fields:
 | `subtitle`  | string                 | No       | Secondary text below title               |
 | `url`       | string                 | No       | Link opened on click                     |
 | `timestamp` | Date / string / number | No       | ISO 8601, Unix timestamp, or Date object |
+| `notify`    | boolean                | No       | If true, content changes mark read items as unread again (default: false) |
 
 Always map a descriptive field to `subtitle` for maximum information at a glance.
+
+**`notify` field:** Use for notification-style sources (e.g., GitHub notifications) where one item represents an ongoing thread (PR/issue). Without `notify`, once a user reads an item, subsequent content updates remain read. Set `notify: true` so Glanceway re-marks the item as unread when its content changes, ensuring the user notices updates.
 
 ## Creating & Packaging a JavaScript Source
 
