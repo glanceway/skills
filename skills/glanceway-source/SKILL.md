@@ -24,12 +24,15 @@ Every source emits items with these fields:
 | `title`     | string                 | Yes      | Main display text                        |
 | `subtitle`  | string                 | No       | Secondary text below title               |
 | `url`       | string                 | No       | Link opened on click                     |
-| `timestamp` | Date / string / number | No       | ISO 8601, Unix timestamp, or Date object |
-| `notify`    | boolean                | No       | If true, content changes mark read items as unread again (default: false) |
+| `timestamp`  | Date / string / number | No       | ISO 8601, Unix timestamp, or Date object |
+| `notify`     | boolean                | No       | If `true`, content changes re-mark read items as unread so users notice updates (default: `false`) |
+| `tickerText` | string                 | No       | Text shown in the menu bar scrolling ticker; falls back to `title` if omitted |
 
 Always map a descriptive field to `subtitle` for maximum information at a glance.
 
 **`notify` field:** Use for notification-style sources (e.g., GitHub notifications) where one item represents an ongoing thread (PR/issue). Without `notify`, once a user reads an item, subsequent content updates remain read. Set `notify: true` so Glanceway re-marks the item as unread when its content changes, ensuring the user notices updates.
+
+**`tickerText` field:** Use when `title` is too long or not well suited for the menu bar scrolling ticker. Keep it short so it reads cleanly when scrolling. If omitted, the ticker falls back to `title`.
 
 ## Creating & Packaging a JavaScript Source
 
